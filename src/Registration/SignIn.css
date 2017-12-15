@@ -1,0 +1,19 @@
+.sign-form-wrap {
+  background-color: gray;
+  height: 100vh;
+}
+
+.sign-form {
+  display: flex;
+  margin: 100px auto;
+  justify-content: center;
+  min-width: 200px;
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+.top-button{
+  display: flex;
+  justify-content: flex-end;
+}

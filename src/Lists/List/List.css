@@ -1,0 +1,30 @@
+.list-main-window {
+    border: 1px solid black;
+    max-width: 30%;
+}
+.list-header {
+    background: deepskyblue;
+}
+#edit {
+    width: 20px;
+}
+
+#addBtn {
+    width: 5%;
+    height: 30%;
+}
+
+#namefield {
+    width: 74%;
+    height: 20%;
+}
+
+.list-new-task {
+    display: flex;
+    flex-direction: row;
+}
+
+#deleteBtn {
+    width: 5%;
+    height: 30%;
+}
