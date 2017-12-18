@@ -27,3 +27,12 @@ export function deleteList(listId) {
             }
         });
 }
+
+export function updateList(listId, data) {
+    return axios.patch('http://localhost:3000/v1/lists/'+listId, {list: {label: data}}, {headers: {}})
+        .then((response) => {
+            if(response.status === 200) {
+                return Promise.resolve(response.data);
+            }
+        });
+}

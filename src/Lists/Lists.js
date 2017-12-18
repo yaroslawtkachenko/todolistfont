@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './Lists.css';
-import {deleteList, getLists} from "../actions/listActions";
+import {getLists, updateList} from "../actions/listActions";
+import Modal from 'react-modal';
 import EditForm from "../Edit/EditForm";
 import List from "./List/List";
 import {createList} from "../actions/listActions";
-import _ from 'lodash';
 
 class Lists extends Component {
     constructor(props){
         super(props);
-        this.state = {lists: []}
+        this.state = {
+            lists: [],
+            isShowingModal: false
+        };
     }
 
     componentWillMount(){
@@ -30,6 +33,14 @@ class Lists extends Component {
             );
     };
 
+    handleUpdateList = (listId,listName) => {
+        updateList(listId, listName)
+            .then(responce => {
+                    this.setState({lists: [...this.state.lists, responce]})
+                }
+            );
+    };
+
     render(){
         return(
           <div className='lists'>
@@ -39,6 +50,7 @@ class Lists extends Component {
                       key={list.id}
                       list = {list}
                       onListDelete = {this.onListDelete}
+                      onUpdateList = {this.handleUpdateList}
                   />
               )}
           </div>

@@ -17,8 +17,6 @@ class EditForm extends Component {
             <div className='edit-main'>
                 <div className='edit-label'>
                     <input type = 'text' placeholder='Enter list name' ref='inputListName'/>
-                </div>
-                <div className='edit-confirm'>
                     <button onClick={this.handleClick}>
                         Add List
                     </button>

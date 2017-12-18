@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './List.css';
 import {deleteList} from "../../actions/listActions";
 import Tasks from "../../Tasks/Tasks";
-import {createTask} from "../../actions/taskActions";
+import EditList from "../../Edit/Modal/EditList/EditList";
 
 class List extends Component{
     constructor(props){
         super(props);
-        this.state = {tasks: []}
+        this.state = {
+            isShowingModal: false
+        }
     }
 
     handleDelClick = () => {
@@ -17,16 +19,14 @@ class List extends Component{
             });
     };
 
-    handleUpdateClick = () => {
-
+    handleEditClick = () => {
+        this.setState({isShowingModal:true});
     };
 
-    taskCreateClick = () => {
-      createTask(this.refs.taskName.value,this.props.list.id)
-          .then((response) => {
-            this.setState({tasks: [...this.state.tasks, response]})
-          })
+    handleCloseModal = () => {
+        this.setState({isShowingModal: false});
     };
+
 
     render() {
         return (
@@ -34,22 +34,14 @@ class List extends Component{
                 <div className='list-header'>
                     <img id='edit' src='http://s1.iconbird.com/ico/2013/9/452/w512h5121380476717calendar.png'/>
                     <span>{this.props.list.label}</span>
+                    <input onClick={this.handleEditClick} id='deleteBtn' type='image' src='http://ru.seaicons.com/wp-content/uploads/2015/11/Editing-Edit-icon.png'/>
                     <input onClick={this.handleDelClick} id='deleteBtn' type='image' src='http://s1.iconbird.com/ico/2013/9/452/w448h5121380477116trash.png'/>
                 </div>
-                <div className = 'list-new-task'>
-                    <input id='addBtn' type = 'image' src='http://s1.iconbird.com/ico/2013/6/355/w128h1281372334739plus.png'/>
-                    <input id='namefield' type = 'name' ref='taskName'/>
-                    <button onClick={this.taskCreateClick}>Add Tasks</button>
-                </div>
                 <div className='list-tasks-window'>
-                    {this.state.tasks.map(task =>
-                        <Tasks
-                            key={task.id}
-                            task={task}
-                            taskCreate={this.taskCreateClick}/>
-                    )};
-
+                    <Tasks
+                        listId = {this.props.list.id}/>
                 </div>
+                {this.state.isShowingModal && <EditList onUpdateList = {this.props.onUpdateList} listId = {this.props.list.id} closeModal = {this.handleCloseModal}/>}
             </div>
         );
     }
