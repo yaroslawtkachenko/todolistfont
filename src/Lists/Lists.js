@@ -35,9 +35,11 @@ class Lists extends Component {
 
     handleUpdateList = (listId,listName) => {
         updateList(listId, listName)
-            .then(responce => {
-                    this.setState({lists: [...this.state.lists, responce]})
-                }
+            .then(response =>
+                this.setState(
+                    {lists: this.state.lists.map(list =>
+                        list.id === response.id ? response : list)}
+                    )
             );
     };
 
