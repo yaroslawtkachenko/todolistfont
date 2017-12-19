@@ -4,7 +4,15 @@
 }
 .list-header {
     background: deepskyblue;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
+
+.list-tools {
+    visibility: hidden;
+}
+
 #edit {
     width: 20px;
 }

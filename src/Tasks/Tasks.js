@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Task from "./Task/Task";
-import {getTasks, createTask, upTask, downTask} from "../actions/taskActions";
+import {getTasks, createTask, upTask, downTask, updateTask} from "../actions/taskActions";
 
 class Tasks extends Component{
     constructor(props){
@@ -22,7 +22,8 @@ class Tasks extends Component{
     };
 
     onTaskDelete = (response) => {
-        this.setState({tasks: this.state.tasks.filter(task => task.id !== response.id)
+        this.setState({tasks: this.state.tasks.filter(task =>
+            task.id !== response.id)
         });
     };
 
@@ -40,6 +41,16 @@ class Tasks extends Component{
             });
     };
 
+    onTaskUpdate = (taskId,taskName,listId) => {
+        updateTask(taskId,taskName,listId)
+            .then(response =>
+                this.setState(
+                    {tasks: this.state.tasks.map(task =>
+                        task.id === response.id ? response : task)}
+                )
+            );
+    };
+
     render() {
         return (
             <div className='task-main-window'>
@@ -53,11 +64,12 @@ class Tasks extends Component{
                         <Task
                             key={task.id}
                             task={task}
+                            listId = {this.props.listId}
                             taskCreate={this.taskCreateClick}
                             onDeleteTask = {this.onTaskDelete}
                             taskUp = {this.handleTaskUp}
                             taskDown = {this.handleTaskDown}
-                            listId = {this.props.listId}
+                            onTaskUpdate = {this.onTaskUpdate}
                             />
                     )}
                 </div>
