@@ -1,38 +1,31 @@
 .list-main-window {
-    border: 1px solid black;
-    max-width: 30%;
-}
+  border: 1px solid black;
+  margin-bottom: 2%; }
+  .list-main-window .list-tools {
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0; }
+    .list-main-window .list-tools:hover {
+      opacity: 100; }
+
 .list-header {
-    background: deepskyblue;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
+  background: deepskyblue;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
 
-.list-tools {
-    visibility: hidden;
-}
+.list-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px; }
 
-#edit {
-    width: 20px;
-}
-
-#addBtn {
-    width: 5%;
-    height: 30%;
-}
-
-#namefield {
-    width: 74%;
-    height: 20%;
-}
-
-.list-new-task {
-    display: flex;
-    flex-direction: row;
-}
-
-#deleteBtn {
-    width: 5%;
-    height: 30%;
-}
+.list-name {
+  font-family: Times New Roman;
+  font-size: 20px;
+  color: white;
+  width: 87%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  text-align: left; }

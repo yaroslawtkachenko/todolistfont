@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Task from "./Task/Task";
 import {getTasks, createTask, upTask, downTask, updateTask} from "../actions/taskActions";
+import './Tasks.scss';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/fontawesome-free-solid';
 
 class Tasks extends Component{
     constructor(props){
         super(props);
-        this.state = {tasks: []}
-
+        this.state = {tasks: []};
     }
 
     componentWillMount() {
@@ -53,13 +55,13 @@ class Tasks extends Component{
 
     render() {
         return (
-            <div className='task-main-window'>
+            <div className='tasks-main-window'>
                 <div className = 'tasks-new-task'>
-                    <input id='addBtn' type = 'image' src='http://s1.iconbird.com/ico/2013/6/355/w128h1281372334739plus.png'/>
+                    <FontAwesomeIcon icon={faPlus} size = '2x' color='greenyellow'/>
                     <input id='namefield' type = 'name' ref='taskName'/>
                     <button onClick={this.taskCreateClick}>Add Tasks</button>
                 </div>
-                <div className='task-body'>
+                <div className='tasks-task'>
                     {this.state.tasks.map(task =>
                         <Task
                             key={task.id}

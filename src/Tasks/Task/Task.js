@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {deleteTask, downTask, statusTask, upTask} from "../../actions/taskActions";
 import EditTask from "../../Edit/Modal/EditTask/EditTask";
-import './Task.css';
+import './forTask.scss'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCaretUp, faCaretDown, faPencilAlt, faTrash} from '@fortawesome/fontawesome-free-solid';
 
 class Task extends Component{
     constructor(props){
@@ -44,12 +46,19 @@ class Task extends Component{
     render() {
         const notdone = <div className='task-main-window'>
             <div className='task-body'>
-                <input type = 'checkbox' onClick={this.handleTaskStatus}  />
-                <span>{this.props.task.content}</span>
-                <input onClick={this.handleTaskUp} id='deleteBtn' type='image' src='https://png.icons8.com/metro/540/collapse-arrow.png'/>
-                <input onClick={this.handleTaskDown} id='deleteBtn' type='image' src='https://png.icons8.com/metro/540/expand-arrow.png'/>
-                <input onClick={this.handleEditClick} id='deleteBtn' type='image' src='http://ru.seaicons.com/wp-content/uploads/2015/11/Editing-Edit-icon.png'/>
-                <input onClick={this.handleDelClick} id='deleteBtn' type='image' src='http://s1.iconbird.com/ico/2013/9/452/w448h5121380477116trash.png'/>
+                <div className='check-task'>
+                    <input type = 'checkbox' onClick={this.handleTaskStatus}/>
+                </div>
+                <p/>
+                <div className='task-name'>
+                    <span>{this.props.task.content}</span>
+                </div>
+                <div className='task-tools'>
+                    <FontAwesomeIcon onClick={this.handleTaskUp} icon={faCaretUp} size = '1x'/> |
+                    <FontAwesomeIcon onClick={this.handleTaskDown} icon={faCaretDown} size = '1x'/> |
+                    <FontAwesomeIcon onClick={this.handleEditClick} icon={faPencilAlt} size = '1x'/> |
+                    <FontAwesomeIcon onClick={this.handleDelClick} icon={faTrash} size = '1x'/>
+                </div>
             </div>
             {this.state.isShowingModal &&
             <EditTask listId={this.props.listId}
@@ -60,12 +69,18 @@ class Task extends Component{
         </div>;
         const done = <div className='task-main-window'>
             <div className='task-body'>
-                <input type = 'checkbox' onClick={this.handleTaskStatus}/>
-                <span id='donetask'>{this.props.task.content}</span>
-                <input onClick={this.handleTaskUp} id='deleteBtn' type='image' src='https://png.icons8.com/metro/540/collapse-arrow.png'/>
-                <input onClick={this.handleTaskDown} id='deleteBtn' type='image' src='https://png.icons8.com/metro/540/expand-arrow.png'/>
-                <input onClick={this.handleEditClick} id='deleteBtn' type='image' src='http://ru.seaicons.com/wp-content/uploads/2015/11/Editing-Edit-icon.png'/>
-                <input onClick={this.handleDelClick} id='deleteBtn' type='image' src='http://s1.iconbird.com/ico/2013/9/452/w448h5121380477116trash.png'/>
+                <div className='check-task'>
+                    <input type = 'checkbox' onClick={this.handleTaskStatus}/>
+                </div>
+                <div className='task-name'>
+                    <span id='donetask'>{this.props.task.content}</span>
+                </div>
+                <div className='task-tools'>
+                    <FontAwesomeIcon onClick={this.handleTaskUp} icon={faCaretUp} size = '1x'/> |
+                    <FontAwesomeIcon onClick={this.handleTaskDown} icon={faCaretDown} size = '1x'/> |
+                    <FontAwesomeIcon onClick={this.handleEditClick} icon={faPencilAlt} size = '1x'/> |
+                    <FontAwesomeIcon onClick={this.handleDelClick} icon={faTrash} size = '1x'/>
+                </div>
             </div>
             {this.state.isShowingModal &&
             <EditTask listId={this.props.listId}

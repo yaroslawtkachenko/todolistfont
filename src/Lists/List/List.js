@@ -3,7 +3,10 @@ import './List.css';
 import {deleteList} from "../../actions/listActions";
 import Tasks from "../../Tasks/Tasks";
 import EditList from "../../Edit/Modal/EditList/EditList";
-import {updateTask} from "../../actions/taskActions";
+import FontAwesome from 'react-fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faPencilAlt, faCalendarAlt, faSortAlphaUp,faSortAlphaDown,faTrash} from '@fortawesome/fontawesome-free-solid';
+
 
 class List extends Component{
     constructor(props){
@@ -33,12 +36,15 @@ class List extends Component{
             <div className='list-main-window'>
                 <div className='list-header'>
                     <div className='list-label'>
-                        <img id='edit' src='http://s1.iconbird.com/ico/2013/9/452/w512h5121380476717calendar.png'/>
+                        <FontAwesomeIcon icon={faCalendarAlt} size = '2x'/>
+                    </div>
+                    <div className='list-name'>
                         <span>{this.props.list.label}</span>
                     </div>
                     <div className='list-tools'>
-                        <input onClick={this.handleEditClick} id='deleteBtn' type='image' src='http://ru.seaicons.com/wp-content/uploads/2015/11/Editing-Edit-icon.png'/>
-                        <input onClick={this.handleDelClick} id='deleteBtn' type='image' src='http://s1.iconbird.com/ico/2013/9/452/w448h5121380477116trash.png'/>
+                        <FontAwesomeIcon onClick={this.handleEditClick} icon={faPencilAlt} size = '2x'/>
+                        |
+                        <FontAwesomeIcon onClick={this.handleDelClick} icon={faTrash} size = '2x'/>
                     </div>
                 </div>
                 <div className='list-tasks-window'>

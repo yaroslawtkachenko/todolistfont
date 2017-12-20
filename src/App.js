@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import Window from "./Window/Window";
 import SignIn from "./Registration/SignIn";
 

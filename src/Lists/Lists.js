@@ -45,16 +45,18 @@ class Lists extends Component {
 
     render(){
         return(
-          <div className='lists'>
-              <EditForm addList={this.addNewList}/>
-              {this.state.lists.map(list =>
-                  <List
-                      key={list.id}
-                      list = {list}
-                      onListDelete = {this.onListDelete}
-                      onUpdateList = {this.handleUpdateList}
-                  />
-              )}
+          <div className='container'>
+              <div className="col-7 justify-content-md-center">
+                  <EditForm addList={this.addNewList}/>
+                  {this.state.lists.map(list =>
+                      <List
+                          key={list.id}
+                          list = {list}
+                          onListDelete = {this.onListDelete}
+                          onUpdateList = {this.handleUpdateList}
+                      />
+                  )}
+              </div>
           </div>
         );
     }
