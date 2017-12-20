@@ -1,0 +1,38 @@
+.task-main-window {
+  #donetask {
+    text-decoration: line-through;
+  }
+
+  &:hover {
+    background-color: #fff266;
+    opacity: 100;
+  }
+
+  border-top: 1px solid grey;
+
+  .task-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+
+
+    .task-name {
+      width: 80%;
+    }
+  }
+
+  .check-task {
+    margin: 10px;
+  }
+
+  .task-tools {
+    margin: 10px;
+    opacity: 0;
+    &:hover {
+      cursor:pointer;
+      zoom: normal;
+      opacity: 100;
+    }
+  }
+}
