@@ -13,7 +13,8 @@ class EditList extends Component {
             <div>
                 <Modal
                 isOpen={true}
-                contentLabel='Edit'>
+                contentLabel='Edit'
+                className='modal-list'>
                     <EditListContent  onUpdateList = {this.props.onUpdateList} listId = {this.props.listId} onRequestClose = {this.props.closeModal}/>
                 </Modal>
             </div>

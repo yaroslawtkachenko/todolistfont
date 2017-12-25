@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import './SignIn.scss';
+import './SignIn.css';
 import {createUser} from "../actions/userActions";
 import {loginUser} from "../actions/userActions";
 

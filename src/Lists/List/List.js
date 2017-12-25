@@ -5,7 +5,7 @@ import Tasks from "../../Tasks/Tasks";
 import EditList from "../../Edit/Modal/EditList/EditList";
 import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faCalendarAlt, faSortAlphaUp,faSortAlphaDown,faTrash} from '@fortawesome/fontawesome-free-solid';
+import { faPencilAlt, faCalendarAlt, faTrash} from '@fortawesome/fontawesome-free-solid';
 
 
 class List extends Component{
@@ -47,7 +47,7 @@ class List extends Component{
                         <FontAwesomeIcon onClick={this.handleDelClick} icon={faTrash} size = '2x'/>
                     </div>
                 </div>
-                <div className='list-tasks-window'>
+                <div className='list-tasks-windows'>
                     <Tasks
                         listId = {this.props.list.id}
                     />

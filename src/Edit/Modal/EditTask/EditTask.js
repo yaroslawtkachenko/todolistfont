@@ -13,10 +13,12 @@ class EditTask extends Component {
             <div>
                 <Modal
                     isOpen={true}
-                    contentLabel='Edit'>
+                    contentLabel='Edit'
+                    className='modal-task'>
                     <EditTaskContent
                         listId = {this.props.listId}
                         taskId = {this.props.taskId}
+                        taskName = {this.props.taskName}
                         onRequestClose = {this.props.closeModal}
                         onTaskUpdate = {this.props.onTaskUpdate}
                     />

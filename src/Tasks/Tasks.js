@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Task from "./Task/Task";
 import {getTasks, createTask, upTask, downTask, updateTask} from "../actions/taskActions";
-import './Tasks.scss';
+import './Tasks.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/fontawesome-free-solid';
+import { Button } from 'reactstrap';
 
 class Tasks extends Component{
     constructor(props){
@@ -19,7 +20,8 @@ class Tasks extends Component{
     taskCreateClick = () => {
         createTask(this.refs.taskName.value,this.props.listId)
             .then((response) => {
-                this.setState({tasks: [...this.state.tasks, response]})
+                this.setState({tasks: [...this.state.tasks, response]});
+                this.refs.taskName.value = '';
             })
     };
 
@@ -57,9 +59,15 @@ class Tasks extends Component{
         return (
             <div className='tasks-main-window'>
                 <div className = 'tasks-new-task'>
-                    <FontAwesomeIcon icon={faPlus} size = '2x' color='greenyellow'/>
-                    <input id='namefield' type = 'name' ref='taskName'/>
-                    <button onClick={this.taskCreateClick}>Add Tasks</button>
+                    <div className='tasks-label'>
+                        <FontAwesomeIcon icon={faPlus} size = '2x' color='darkgreen'/>
+                    </div>
+                    <div className='tasks-name'>
+                        <input id='namefield' type = 'name' placeholder='Start typing here to create a task...' ref='taskName'/>
+                    </div>
+                    <div className='tasks-create'>
+                        <button onClick={this.taskCreateClick} >Add Tasks</button>
+                    </div>
                 </div>
                 <div className='tasks-task'>
                     {this.state.tasks.map(task =>
@@ -79,5 +87,11 @@ class Tasks extends Component{
         );
     }
 }
+
+Tasks.defaultProps = {
+    defaultValue: '',
+    placeholder: ''
+};
+
 
 export default Tasks;

@@ -1,4 +1,4 @@
-import './EditListContent.css';
+// import './EditListContent.css';
 import React, { Component } from 'react';
 import {updateList} from "../../../actions/listActions";
 
@@ -14,9 +14,9 @@ class EditListContent extends Component {
     render() {
         return (
             <div className='modal-content'>
-                <input type='name' ref='newName'/>
-                <button onClick={this.props.onRequestClose} >Close</button>
+                <input type='name' placeholder='Edit list name...' ref='newName'/>
                 <button onClick={this.handleUpdateList} >Submite</button>
+                <button onClick={this.props.onRequestClose} >Close</button>
             </div>
         );
     }

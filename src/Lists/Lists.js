@@ -45,8 +45,7 @@ class Lists extends Component {
 
     render(){
         return(
-          <div className='container'>
-              <div className="col-7 justify-content-md-center">
+          <div className='necontainer'>
                   <EditForm addList={this.addNewList}/>
                   {this.state.lists.map(list =>
                       <List
@@ -56,7 +55,6 @@ class Lists extends Component {
                           onUpdateList = {this.handleUpdateList}
                       />
                   )}
-              </div>
           </div>
         );
     }

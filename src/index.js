@@ -1,7 +1,7 @@
 import React from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './forindex.scss';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
@@ -15,6 +15,8 @@ import List from "./Lists/List/List";
 import EditForm from "./Edit/EditForm";
 import Lists from "./Lists/Lists";
 import Window from "./Window/Window";
+import SignIn from "./Registration/SignIn";
+import Menu from "./Menu/Menu";
 
 function playlist(state = []) {
     return state;
@@ -23,11 +25,11 @@ function playlist(state = []) {
 const store = createStore(playlist, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <Window/>
-        </BrowserRouter>
-    </Provider>,
+        <Provider store={store}>
+            <BrowserRouter>
+                    <App/>
+            </BrowserRouter>
+        </Provider>,
     document.getElementById('root')
 );
 

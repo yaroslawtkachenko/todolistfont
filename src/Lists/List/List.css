@@ -1,19 +1,25 @@
 .list-main-window {
-  border: 1px solid black;
-  margin-bottom: 2%; }
-  .list-main-window .list-tools {
+  width: 35%;
+  background-color: white;
+  margin-bottom: 2%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 0px 4px; }
+
+.list-header {
+  background: royalblue;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  box-shadow: 0px 0px 4px; }
+  .list-header .list-tools {
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    opacity: 0; }
-    .list-main-window .list-tools:hover {
-      opacity: 100; }
-
-.list-header {
-  background: deepskyblue;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row; }
+    opacity: 0.0; }
+    .list-header .list-tools:hover {
+      opacity: 1;
+      cursor: pointer; }
 
 .list-label {
   margin-top: 10px;
@@ -21,11 +27,12 @@
   margin-bottom: 10px; }
 
 .list-name {
-  font-family: Times New Roman;
+  font-family: Ubuntu;
   font-size: 20px;
   color: white;
-  width: 87%;
+  width: 80%;
   margin-top: 5px;
   margin-bottom: 10px;
   padding-left: 10px;
-  text-align: left; }
+  text-align: left;
+  word-break: break-all; }

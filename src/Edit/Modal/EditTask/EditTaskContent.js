@@ -8,15 +8,15 @@ class EditTaskContent extends Component {
     }
 
     handleUpdateTask = () => {
-        this.props.onTaskUpdate(this.props.taskId,this.refs.newName.value,this.props.listId)
+        this.props.onTaskUpdate(this.props.taskId,this.refs.newName.value,this.props.listId);
     };
 
     render() {
         return (
             <div className='modal-content'>
-                <input type='name' ref='newName'/>
+                <input type='name' ref='newName' placeholder='Edit task...'/>
+                <button onClick={this.handleUpdateTask}>Submite</button>
                 <button onClick={this.props.onRequestClose} >Close</button>
-                <button onClick={this.handleUpdateTask} >Submite</button>
             </div>
         );
     }

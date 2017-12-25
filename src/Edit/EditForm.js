@@ -10,6 +10,7 @@ class EditForm extends Component {
 
     handleClick = () => {
         this.props.addList(this.refs.inputListName.value);
+        this.refs.inputListName.value = '';
     };
 
     render() {
@@ -17,6 +18,8 @@ class EditForm extends Component {
             <div className='edit-main'>
                 <div className='edit-label'>
                     <input type = 'text' placeholder='Enter list name' ref='inputListName'/>
+                </div>
+                <div className='edit-create'>
                     <button onClick={this.handleClick}>
                         Add List
                     </button>
