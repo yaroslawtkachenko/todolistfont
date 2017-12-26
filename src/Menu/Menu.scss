@@ -1,0 +1,24 @@
+.menu-main-windowyy {
+  font-family: Ubuntu;
+  background-color: silver;
+  display: flex;
+  flex-direction: row;
+  border-color: black;
+  justify-content: space-between;
+  a {
+    color: black;
+    padding-right: 5px;
+    padding-left: 3px;
+  }
+}
+
+.nav11bar {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-name {
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 20px;
+}

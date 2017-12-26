@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Window from "./Window/Window";
+import logo from '../logo.svg';
+import Window from "../Window/Window";
 import './App.scss'
-import SignIn from "./Registration/SignIn";
+import SignIn from "../Registration/SignIn";
 
 class App extends Component {
   constructor(props){

@@ -1,0 +1,23 @@
+.task-main-window {
+  border-top: 1px solid grey; }
+  .task-main-window #donetask {
+    text-decoration: line-through; }
+  .task-main-window:hover {
+    background-color: #fff266;
+    opacity: 100; }
+  .task-main-window .task-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline; }
+    .task-main-window .task-body .task-name {
+      width: 80%; }
+  .task-main-window .check-task {
+    margin: 10px; }
+  .task-main-window .task-tools {
+    margin: 10px;
+    opacity: 0; }
+    .task-main-window .task-tools:hover {
+      cursor: pointer;
+      zoom: normal;
+      opacity: 100; }

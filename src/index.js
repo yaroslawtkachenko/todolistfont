@@ -2,7 +2,7 @@ import React from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import ReactDOM from 'react-dom';
 import './forindex.scss';
-import App from './App';
+import App from './App/App';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';

@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
 import './SignIn.css';
-import {createUser} from "../actions/userActions";
-import {loginUser} from "../actions/userActions";
+import {signIn,signUp,signOut} from "../actions/userActions";
 
 class SignIn extends Component {
     constructor(props) {
@@ -15,26 +14,26 @@ class SignIn extends Component {
         if(this.state.singInForm === true) {
             let email = this.refs.emailSI.value;
             let pass = this.refs.passwordSI.value;
-            loginUser({
+            signIn({
                 email: email,
                 password: pass
-            })
+            });
         }
         else {
             let email = this.refs.emailSU.value;
             let pass = this.refs.passwordSU.value;
             let confpass = this.refs.confPasswordSU.value;
-            createUser({
+            signUp({
                 email: email,
                 password: pass,
                 password_confirmation: confpass,
                 confirm_success_url: ''
-            })
+            });
             this.refs.emailSU.value = '';
             this.refs.passwordSU.value = '';
             this.refs.confPasswordSU.value = '';
         }
-    }
+    };
 
     goToSignUp = () => {
         this.setState({singInForm:false})
