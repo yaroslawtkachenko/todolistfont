@@ -1,58 +1,38 @@
 import React, { Component } from 'react';
 import Task from "./Task/Task";
-import {getTasks, createTask, upTask, downTask, updateTask} from "../actions/taskActions";
 import './Tasks.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/fontawesome-free-solid';
-import { Button } from 'reactstrap';
+import {createTask, getTasks, deleteTask, updateTask, statusTask, upTask,downTask} from "../redux/actions/taskActions";
+
+const propTypes = {
+    tasks: PropTypes.array.isRequired,
+    listId: PropTypes.number.isRequired,
+    createTask: PropTypes.func.isRequired,
+    deleteTask: PropTypes.func.isRequired,
+    updateTask: PropTypes.func.isRequired,
+    getTasks: PropTypes.func.isRequired,
+    statusTask: PropTypes.func.isRequired,
+    upTask: PropTypes.func.isRequired,
+    downTask: PropTypes.func.isRequired
+};
 
 class Tasks extends Component{
     constructor(props){
         super(props);
-        this.state = {tasks: []};
     }
 
     componentWillMount() {
-        getTasks(this.props.listId)
-            .then(response => this.setState({tasks: response}))
+        this.props.getTasks(this.props.listId)
     }
 
     taskCreateClick = () => {
-        createTask(this.refs.taskName.value,this.props.listId)
-            .then((response) => {
-                this.setState({tasks: [...this.state.tasks, response]});
-                this.refs.taskName.value = '';
-            })
-    };
-
-    onTaskDelete = (response) => {
-        this.setState({tasks: this.state.tasks.filter(task =>
-            task.id !== response.id)
-        });
-    };
-
-    handleTaskUp = (taskId) => {
-        upTask(taskId)
-            .then((response) => {
-                this.setState({tasks: response})
-            });
-    };
-
-    handleTaskDown = (taskId) => {
-        downTask(taskId)
-            .then((response) => {
-                this.setState({tasks: response})
-            });
-    };
-
-    onTaskUpdate = (taskId,taskName,listId) => {
-        updateTask(taskId,taskName,listId)
-            .then(response =>
-                this.setState(
-                    {tasks: this.state.tasks.map(task =>
-                        task.id === response.id ? response : task)}
-                )
-            );
+        this.props.createTask(this.props.listId, this.refs.taskName.value)
+            .then(
+                this.refs.taskName.value = ''
+            )
     };
 
     render() {
@@ -70,16 +50,16 @@ class Tasks extends Component{
                     </div>
                 </div>
                 <div className='tasks-task'>
-                    {this.state.tasks.map(task =>
+                    {this.props.tasks.filter(task => task.list_id === this.props.listId).map((task) =>
                         <Task
                             key={task.id}
                             task={task}
                             listId = {this.props.listId}
-                            taskCreate={this.taskCreateClick}
-                            onDeleteTask = {this.onTaskDelete}
-                            taskUp = {this.handleTaskUp}
-                            taskDown = {this.handleTaskDown}
-                            onTaskUpdate = {this.onTaskUpdate}
+                            deleteTask = {this.props.deleteTask}
+                            upTask = {this.props.upTask}
+                            downTask = {this.props.downTask}
+                            updateTask = {this.props.updateTask}
+                            statusTask = {this.props.statusTask}
                             />
                     )}
                 </div>
@@ -88,10 +68,24 @@ class Tasks extends Component{
     }
 }
 
-Tasks.defaultProps = {
-    defaultValue: '',
-    placeholder: ''
-};
+Tasks.propTypes = propTypes;
 
+function mapStateToProps(state) {
+    return {
+        tasks: state.tasks
+    }
+}
 
-export default Tasks;
+function mapDispatchToProps (dispatch) {
+    return {
+        getTasks: (listId) => dispatch(getTasks(listId)),
+        createTask: (listId,taskName) => dispatch(createTask(listId,taskName)),
+        deleteTask: (taskId) => dispatch(deleteTask(taskId)),
+        updateTask: (taskId,taskName,listId) => dispatch(updateTask(taskId,taskName,listId)),
+        statusTask: (taskId) => dispatch(statusTask(taskId)),
+        upTask: (taskId) => dispatch(upTask(taskId)),
+        downTask: (taskId) => dispatch(downTask(taskId))
+    };
+}
+
+export default (connect(mapStateToProps,mapDispatchToProps)(Tasks));

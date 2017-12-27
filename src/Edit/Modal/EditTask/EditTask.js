@@ -20,7 +20,7 @@ class EditTask extends Component {
                         taskId = {this.props.taskId}
                         taskName = {this.props.taskName}
                         onRequestClose = {this.props.closeModal}
-                        onTaskUpdate = {this.props.onTaskUpdate}
+                        updateTask = {this.props.updateTask}
                     />
                 </Modal>
             </div>

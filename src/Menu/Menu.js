@@ -15,11 +15,11 @@ class Menu extends Component {
                     <span>Todo List</span>
                 </div>
                 <div className="nav1bar">
-                    <FontAwesomeIcon onClick={this.handleTaskUp} icon={faSignInAlt} size = '1x'/>
+                    <FontAwesomeIcon icon={faSignInAlt} size = '1x'/>
                     <a href="#">
                         <strong>Sign In</strong>
                     </a>
-                    <FontAwesomeIcon onClick={this.handleTaskUp} icon={faSignOutAlt} size = '1x'/>
+                    <FontAwesomeIcon icon={faSignOutAlt} size = '1x'/>
                     <a href="#">
                         <strong>Sign Out</strong>
                     </a>

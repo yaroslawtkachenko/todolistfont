@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import './List.css';
 import {deleteList} from "../../actions/listActions";
 import Tasks from "../../Tasks/Tasks";
+import PropTypes from 'prop-types';
 import EditList from "../../Edit/Modal/EditList/EditList";
-import FontAwesome from 'react-fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faCalendarAlt, faTrash} from '@fortawesome/fontawesome-free-solid';
 
+const propTypes = {
+    list: PropTypes.object.isRequired,
+    updateList: PropTypes.func.isRequired,
+    deleteList: PropTypes.func.isRequired
+};
 
 class List extends Component{
     constructor(props){
@@ -17,10 +22,7 @@ class List extends Component{
     }
 
     handleDelClick = () => {
-        deleteList(this.props.list.id)
-            .then((response) => {
-                this.props.onListDelete(response)
-            });
+        this.props.deleteList(this.props.list.id);
     };
 
     handleEditClick = () => {
@@ -52,10 +54,17 @@ class List extends Component{
                         listId = {this.props.list.id}
                     />
                 </div>
-                {this.state.isShowingModal && <EditList onUpdateList = {this.props.onUpdateList} listId = {this.props.list.id} closeModal = {this.handleCloseModal}/>}
+                {this.state.isShowingModal &&
+                <EditList
+                    updateList = {this.props.updateList}
+                    listId = {this.props.list.id}
+                    closeModal = {this.handleCloseModal}
+                />}
             </div>
         );
     }
 }
+
+List.propTypes = propTypes;
 
 export default List;

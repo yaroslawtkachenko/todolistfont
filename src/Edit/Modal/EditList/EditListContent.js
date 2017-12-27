@@ -8,7 +8,7 @@ class EditListContent extends Component {
     }
 
     handleUpdateList = () => {
-        this.props.onUpdateList(this.props.listId,this.refs.newName.value );
+        this.props.updateList(this.props.listId,this.refs.newName.value );
     };
 
     render() {

@@ -8,7 +8,7 @@ class EditTaskContent extends Component {
     }
 
     handleUpdateTask = () => {
-        this.props.onTaskUpdate(this.props.taskId,this.refs.newName.value,this.props.listId);
+        this.props.updateTask(this.props.taskId,this.refs.newName.value,this.props.listId);
     };
 
     render() {

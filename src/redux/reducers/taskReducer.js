@@ -1,3 +1,4 @@
+import '../actions/taskActions';
 import {
     CHANGE_TASK_STATUS_SUCCESS,
     CREATE_TASK_SUCCESS, DELETE_TASK_SUCCESS, DOWN_TASK_SUCCESS, GET_TASKS_SUCCESS, UP_TASK_SUCCESS,
@@ -11,14 +12,15 @@ export default function taskReducer(state = [], action) {
         case GET_TASKS_SUCCESS:
             return [...state,...action.payload];
         case UPDATE_TASK_SUCCESS:
-            return [...state, state.tasks.map(task => task.id === action.payload.id ? action.payload : task)];
+            return state.map(task => task.id === action.payload.id ? action.payload : task);
         case DELETE_TASK_SUCCESS:
-            return [...state, state.tasks.filter(task => task.id !== action.payload.id)];
+            return state.filter(task => task.id !== action.payload.id);
         case UP_TASK_SUCCESS:
-            return [...state, state.tasks.map(task => task.id === action.payload.id ? action.payload : task)];
+            return action.payload;
         case DOWN_TASK_SUCCESS:
-            return [...state, state.tasks.map(task => task.id === action.payload.id ? action.payload : task)];
+            return action.payload;
         case CHANGE_TASK_STATUS_SUCCESS:
-            return [...state, state.tasks.map(task => task.id === action.payload.id ? action.payload : task)];
+            return state.map(task => task.id === action.payload.id ? action.payload : task);
     }
+    return state;
 }
