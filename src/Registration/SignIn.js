@@ -1,6 +1,14 @@
 import React, { Component} from 'react';
+import {Link, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
 import './SignIn.css';
-import {signIn,signUp,signOut} from "../actions/userActions";
+import PropTypes from 'prop-types';
+// import {signIn,signUp,signOut} from "../actions/userActions";
+
+const propTypes = {
+    isSignedIn: PropTypes.bool.isRequired,
+    signIn: PropTypes.func.isRequired
+};
 
 class SignIn extends Component {
     constructor(props) {
@@ -11,74 +19,48 @@ class SignIn extends Component {
     }
 
     handleClick = () => {
-        if(this.state.singInForm === true) {
-            let email = this.refs.emailSI.value;
-            let pass = this.refs.passwordSI.value;
-            signIn({
-                email: email,
-                password: pass
-            });
-        }
-        else {
-            let email = this.refs.emailSU.value;
-            let pass = this.refs.passwordSU.value;
-            let confpass = this.refs.confPasswordSU.value;
-            signUp({
-                email: email,
-                password: pass,
-                password_confirmation: confpass,
-                confirm_success_url: ''
-            });
-            this.refs.emailSU.value = '';
-            this.refs.passwordSU.value = '';
-            this.refs.confPasswordSU.value = '';
-        }
-    };
-
-    goToSignUp = () => {
-        this.setState({singInForm:false})
-    };
-
-    goToSignIn = () => {
-        this.setState({singInForm:true})
+        let email = this.refs.emailSI.value;
+        let password = this.refs.passwordSI.value;
+        this.props.signIn(email,password);
     };
 
     render() {
         const signInForm =
-            <div>
+            <div className='auth-main'>
                 <div className='top-button'>
-                    <p>Don`t have an account? <button onClick={this.goToSignUp}>Sign up</button></p>
+                    <p>Don`t have an account? <Link to='/sign_in'>Sign up</Link></p>
                 </div>
                 <div className='sign-form'>
-                    <strong>SignIn</strong>
-                    <input type='email' placeholder='Email' ref='emailSI'/>
-                    <input type='password' placeholder='Password' ref='passwordSI'/>
-                    <div>
+                    <strong id='ttle'>Sign In</strong>
+                    <div className='sign-email'>
+                        Email <input id='seml' type='email' placeholder='Email' ref='emailSI'/>
+                    </div>
+                    <div className='sign-pass'>
+                        Password <input id='spass' type='password' placeholder='Password' ref='passwordSI'/>
+                    </div>
+                    <div className='sign-btn'>
                         <button onClick={this.handleClick}>Sign In</button>
                     </div>
                 </div>
             </div>;
-        const signUpForm =
-            <div>
-                <div className='top-button'>
-                    <p> Already has an account? <button onClick={this.goToSignIn}>Sign in</button></p>
-                </div>
-                <div className="sign-form">
-                    <strong>SignUp</strong>
-                    <input type='email' placeholder='Email' ref='emailSU'/>
-                    <input type='password' placeholder='Password' ref='passwordSU'/>
-                    <input type='password' placeholder='Confirm password' ref='confPasswordSU'/>
-                    <div>
-                        <button onClick={this.handleClick}>Sign Up</button>
-                    </div>
-                </div>;
-            </div>;
         return (
-            <div className='sign-form-wrap'>
-                {this.state.singInForm ? signInForm : signUpForm}
-            </div>
+            this.props.isSignedIn ? <Redirect to='/'/> : signInForm
         );
     }
 }
 
-export default SignIn;
+SignIn.propTypes = propTypes;
+
+function mapStateToProps (state) {
+    return {
+        user: state.user.isSignedIn
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        signIn: (email, password) => dispatch(signIn(email, password))
+    };
+}
+
+export default (connect(mapStateToProps,mapDispatchToProps)(SignIn));

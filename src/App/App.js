@@ -11,15 +11,15 @@ class App extends Component {
       isSignedIn: false
     };
   }
-  signIn = () => {
+
+  sIn = () => {
         this.setState({isSignedIn: true});
     };
 
   render() {
     return (
       <div className="App">
-          {/*{this.state.isSignedIn ? <Window/> : <SignIn signIn={this.signIn}/>}*/}
-        <Window/>
+          {this.state.isSignedIn ? <Window/> : <SignIn signIn={this.sIn}/>}
       </div>
     );
   }

@@ -1,17 +1,21 @@
 import Cookies from 'js-cookie';
 
 export function getCookie() {
-    const cookie = Cookies.get('auth_token');
+    let cookie = Cookies.get('auth_token');
     if(cookie) {
-        return JSON.parse(cookie);
+        return (cookie);
     }
     return {}
 }
 
 export function setCookie (response) {
-    Cookies.set('auth_token', JSON.stringify({
-        'access-token': response.headers['access-token'],
-        'client': response.headers['client'],
-        'uid': response.headers['uid']
-    }));
+    let header = response.headers;
+    if (header['access-token'] && header['client'] && header['uid']) {
+        header = {
+            'access-token': header['access-token'],
+            'client': header['client'],
+            'uid': header['uid']
+        };
+        Cookies.set('auth_token', JSON.stringify(header));
+    }
 }

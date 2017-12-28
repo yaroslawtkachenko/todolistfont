@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import axios from 'axios'
-import {getCookie} from "../../actions/Token";
+import {getCookie, setCookie} from "../../actions/Token";
 
 
 export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS';
@@ -17,6 +17,7 @@ export function getTasks(listId) {
             {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(getTasksSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -28,9 +29,10 @@ export function createTask(listId, data) {
     return(dispatch) => {
         return axios.post('http://localhost:3000/v1/tasks',
             {task: {content: data, list_id: listId}},
-            {headers: {}})
+            {headers: getCookie()})
             .then((response) => {
                 if (response.status === 201) {
+                    setCookie(response);
                     dispatch(createTaskSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -41,9 +43,10 @@ export function createTask(listId, data) {
 export function deleteTask(taskId) {
     return(dispatch) => {
     return axios.delete('http://localhost:3000/v1/tasks/' + taskId,
-        {headers: {}})
+        {headers: getCookie()})
         .then((response) => {
             if(response.status === 200) {
+                setCookie(response);
                 dispatch(deleteTasksSuccess(response.data));
                 return Promise.resolve(response.data);
             }
@@ -54,9 +57,10 @@ export function deleteTask(taskId) {
 export function upTask(taskId) {
     return(dispatch) => {
         return axios.patch('http://localhost:3000/v1/tasks/' + taskId + '/up',
-            {headers: {}})
+            {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(upTaskSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -67,9 +71,10 @@ export function upTask(taskId) {
 export function downTask(taskId) {
     return(dispatch) => {
         return axios.patch('http://localhost:3000/v1/tasks/' + taskId + '/down',
-            {headers: {}})
+            {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(downTaskSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -80,9 +85,10 @@ export function downTask(taskId) {
 export function statusTask(taskId) {
     return(dispatch) => {
         return axios.patch('http://localhost:3000/v1/tasks/' + taskId + '/check',
-            {headers: {}})
+            {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(changeTaskStatusSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -94,9 +100,10 @@ export function updateTask(taskId,data,listId) {
     return(dispatch) => {
         return axios.patch('http://localhost:3000/v1/tasks/' + taskId,
             {task: {content: data, list_id: listId}},
-            {headers: {}})
+            {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(updateTaskSuccess(response.data));
                     return Promise.resolve(response.data);
                 }

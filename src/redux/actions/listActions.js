@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import axios from 'axios'
+import {getCookie, setCookie} from "../../actions/Token";
 
 export const CREATE_LIST_SUCCESS = 'CREATE_LIST_SUCCESS';
 export const GET_LISTS_SUCCESS = 'GET_LISTS_SUCCESS';
@@ -8,9 +9,10 @@ export const UPDATE_LIST_SUCCESS = 'UPDATE_LIST_SUCCESS';
 
 export function createList (data) {
     return(dispatch) => {
-        return axios.post('http://localhost:3000/v1/lists', {list: {label: data}}, {headers: {}})
+        return axios.post('http://localhost:3000/v1/lists', {list: {label: data}}, {headers: getCookie()})
             .then((response) => {
                 if (response.status === 201) {
+                    setCookie(response);
                     dispatch(createListSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -20,9 +22,10 @@ export function createList (data) {
 
 export function getLists () {
     return(dispatch) => {
-        return axios.get('http://localhost:3000/v1/lists', {headers: {}})
+        return axios.get('http://localhost:3000/v1/lists', {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(getListsSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -32,9 +35,10 @@ export function getLists () {
 
 export function deleteList(listId) {
     return(dispatch) => {
-        return axios.delete('http://localhost:3000/v1/lists/' + listId, {headers: {}})
+        return axios.delete('http://localhost:3000/v1/lists/' + listId, {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(deleteListSuccess(response.data));
                     return Promise.resolve(response.data);
                 }
@@ -44,9 +48,10 @@ export function deleteList(listId) {
 
 export function updateList(listId, data) {
     return(dispatch) => {
-        return axios.patch('http://localhost:3000/v1/lists/' + listId, {list: {label: data}}, {headers: {}})
+        return axios.patch('http://localhost:3000/v1/lists/' + listId, {list: {label: data}}, {headers: getCookie()})
             .then((response) => {
                 if (response.status === 200) {
+                    setCookie(response);
                     dispatch(updateListSuccess(response.data));
                     return Promise.resolve(response.data);
                 }

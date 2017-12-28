@@ -8,13 +8,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import combineReducers from './redux/reducers/combineReducers';
 import { Provider } from 'react-redux';
+import SignIn from "./Registration/SignIn";
 
 const store = createStore(combineReducers, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
         <Provider store={store}>
             <BrowserRouter>
-                    <App/>
+                    <SignIn/>
             </BrowserRouter>
         </Provider>,
     document.getElementById('root')
