@@ -3,3 +3,23 @@ button {
   border-color: royalblue;
   color: white;
 }
+
+.modal-content {
+  border: none;
+  width: 10%;
+  height: 100%;
+  margin-top: 20%;
+  margin-left: 40%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .modal-name {
+    width: auto;
+    margin: 2%;
+  }
+  .modal-button {
+    width: auto;
+  }
+}

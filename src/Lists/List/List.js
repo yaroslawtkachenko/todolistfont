@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './List.css';
-import {deleteList} from "../../actions/listActions";
 import Tasks from "../../Tasks/Tasks";
 import PropTypes from 'prop-types';
 import EditList from "../../Edit/Modal/EditList/EditList";

@@ -1,21 +1,20 @@
 import Cookies from 'js-cookie';
 
-export function getCookie() {
-    let cookie = Cookies.get('auth_token');
-    if(cookie) {
-        return (cookie);
-    }
-    return {}
+export function getCookie(key) {
+    return Cookies.get(key);
 }
+export const setAuthCookies = (headers) => {
+    setCookie('access-token', headers['access-token']);
+    setCookie('client', headers['client']);
+    setCookie('uid', headers['uid']);
+};
 
-export function setCookie (response) {
-    let header = response.headers;
-    if (header['access-token'] && header['client'] && header['uid']) {
-        header = {
-            'access-token': header['access-token'],
-            'client': header['client'],
-            'uid': header['uid']
-        };
-        Cookies.set('auth_token', JSON.stringify(header));
+export const setCookie = (key, value) => {
+    if(key && value !== undefined) {
+        Cookies.set(key, value)
     }
+};
+
+export function remCookie(key,value) {
+    return Cookies.remove(key,value);
 }

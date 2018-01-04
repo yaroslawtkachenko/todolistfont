@@ -58,10 +58,10 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
     return {
         getLists: () => dispatch(getLists()),
-        createList: (listName) => dispatch(createList(listName)),
-        updateList: (listId,listName) => dispatch(updateList(listId,listName)),
+        createList: (data) => dispatch(createList(data)),
+        updateList: (listId, data) => dispatch(updateList(listId, data)),
         deleteList: (listId) => dispatch(deleteList(listId))
-    }
+    };
 }
 
 export default (connect(mapStateToProps,mapDispatchToProps)(Lists));

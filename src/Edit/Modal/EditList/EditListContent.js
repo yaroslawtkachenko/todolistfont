@@ -1,6 +1,4 @@
-// import './EditListContent.css';
 import React, { Component } from 'react';
-import {updateList} from "../../../actions/listActions";
 
 class EditListContent extends Component {
     constructor(props) {

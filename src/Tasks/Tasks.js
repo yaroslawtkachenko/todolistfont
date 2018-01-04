@@ -79,12 +79,12 @@ function mapStateToProps(state) {
 function mapDispatchToProps (dispatch) {
     return {
         getTasks: (listId) => dispatch(getTasks(listId)),
-        createTask: (listId,taskName) => dispatch(createTask(listId,taskName)),
+        createTask: (listId,data) => dispatch(createTask(listId,data)),
         deleteTask: (taskId) => dispatch(deleteTask(taskId)),
-        updateTask: (taskId,taskName,listId) => dispatch(updateTask(taskId,taskName,listId)),
+        updateTask: (taskId,data,listId) => dispatch(updateTask(taskId,data,listId)),
         statusTask: (taskId) => dispatch(statusTask(taskId)),
-        upTask: (taskId) => dispatch(upTask(taskId)),
-        downTask: (taskId) => dispatch(downTask(taskId))
+        upTask: (taskId,listId) => dispatch(upTask(taskId,listId)),
+        downTask: (taskId,listId) => dispatch(downTask(taskId,listId))
     };
 }
 

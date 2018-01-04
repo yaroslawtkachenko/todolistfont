@@ -35,11 +35,11 @@ class Task extends Component{
     };
 
     handleTaskUp = () => {
-        this.props.upTask(this.props.task.id);
+        this.props.upTask(this.props.task.id,this.props.listId);
     };
 
     handleTaskDown = () => {
-        this.props.downTask(this.props.task.id);
+        this.props.downTask(this.props.task.id,this.props.listId);
     };
 
     handleTaskStatus = () => {

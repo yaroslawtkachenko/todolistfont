@@ -1,6 +1,5 @@
 import './EditTaskContent.css';
 import React, { Component } from 'react';
-import {updateTask} from "../../../actions/taskActions";
 
 class EditTaskContent extends Component {
     constructor(props) {
@@ -14,9 +13,13 @@ class EditTaskContent extends Component {
     render() {
         return (
             <div className='modal-content'>
-                <input type='name' ref='newName' placeholder='Edit task...'/>
-                <button onClick={this.handleUpdateTask}>Submite</button>
-                <button onClick={this.props.onRequestClose} >Close</button>
+                <div className='modal-name'>
+                    <input type='name' ref='newName' autoFocus={true} placeholder='Edit task...'/>
+                </div>
+                <div className='modal-button'>
+                    <button onClick={this.handleUpdateTask}>Submite</button>
+                    <button onClick={this.props.onRequestClose} >Close</button>
+                </div>
             </div>
         );
     }

@@ -5,6 +5,11 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   box-shadow: 0px 0px 4px; }
+  .list-main-window:hover {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; }
+    .list-main-window:hover .list-tools {
+      opacity: 100; }
 
 .list-header {
   background: royalblue;
@@ -18,7 +23,6 @@
     margin-bottom: 10px;
     opacity: 0.0; }
     .list-header .list-tools:hover {
-      opacity: 1;
       cursor: pointer; }
 
 .list-label {

@@ -3,19 +3,17 @@ import {Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import './SignUp.css';
 import PropTypes from 'prop-types';
-// import {signIn,signUp,signOut} from "../actions/userActions";
+import {signUp} from "../redux/actions/userActions";
+
 
 const propTypes = {
     isSignedIn: PropTypes.bool.isRequired,
     signUp: PropTypes.func.isRequired
 };
 
-class SignIn extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            singInForm: true
-        }
     }
 
     handleClick = () => {
@@ -32,7 +30,7 @@ class SignIn extends Component {
         const signUpForm =
             <div className='auth-main'>
                 <div className='top-button'>
-                    <p> Already has an account? <button onClick={this.goToSignIn}>Sign in</button></p>
+                    <p> Already has an account? <Link to='/sign_in'>Sign in</Link></p>
                 </div>
                 <div className="sign-form">
                     <strong id='ttle' >Sign Up</strong>
@@ -54,17 +52,17 @@ class SignIn extends Component {
     }
 }
 
-SignIn.propTypes = propTypes;
+SignUp.propTypes = propTypes;
 
 function mapStateToProps (state) {
     return {
-        user: state.user.isSignedIn
+        isSignedIn: state.user.isSignedIn
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        singUp: (email, password, confpass) => dispatch(signUp(email,password,confpass))
+        signUp: (email, password, confpass) => dispatch(signUp(email,password,confpass))
     };
 }
 

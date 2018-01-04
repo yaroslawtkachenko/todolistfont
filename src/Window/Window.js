@@ -4,18 +4,19 @@ import Lists from "../Lists/Lists";
 import Menu from "../Menu/Menu";
 
 class Window extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
     render() {
         return (
                 <div className='window' >
-                    <Menu/>
+                    <Menu signOut={this.props.signOut}/>
                     <Lists/>
                 </div>
         );
     }
 }
+
 
 export default Window;

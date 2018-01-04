@@ -2,11 +2,14 @@
   #donetask {
     text-decoration: line-through;
   }
+
   &:hover {
-    background-color: #f7ff94;
-    opacity: 100;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    background-color: #f7ff94;
+    .task-tools {
+      opacity: 100;
+    }
   }
 
   border-top: 1px solid grey;
@@ -17,13 +20,14 @@
     justify-content: space-between;
     align-items: center;
 
-
     .task-name {
-      margin-top: 8px;
+      margin-top: 0px;
       width: 78%;
       padding-left: 12px;
       word-break: break-all;
-      margin-bottom: 8px;
+      margin-bottom: 0px;
+      border-left: 1px solid silver;
+      border-right: 1px solid silver;
     }
   }
 
@@ -39,7 +43,6 @@
     &:hover {
       cursor:pointer;
       zoom: normal;
-      opacity: 100;
     }
   }
 }

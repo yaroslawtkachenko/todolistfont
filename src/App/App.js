@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import { connect } from 'react-redux';
 import Window from "../Window/Window";
 import './App.scss'
+import { Route, withRouter,Switch } from 'react-router-dom';
 import SignIn from "../Registration/SignIn";
+import SignUp from "../Registration/SignUp";
+import PropTypes from 'prop-types';
+import {validateToken} from "../redux/actions/userActions";
+import Authorize from '../redux/actions/Authorize';
+
+const propTypes = {
+    isSignedIn: PropTypes.bool.isRequired
+};
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      isSignedIn: false
-    };
   }
 
-  sIn = () => {
-        this.setState({isSignedIn: true});
-    };
+    componentWillMount () {
+        this.props.validateToken();
+    }
 
   render() {
     return (
       <div className="App">
-          {this.state.isSignedIn ? <Window/> : <SignIn signIn={this.sIn}/>}
+          <Route path="/sign_in" component={SignIn}/>
+          <Route path="/sign_up" component={SignUp}/>
+          <Authorize path='/' component={Window}/>
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = propTypes;
+
+function mapStateToProps(state) {
+    return {
+        isSignedIn: state.user.isSignedIn,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        validateToken: () => dispatch(validateToken())
+    };
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));

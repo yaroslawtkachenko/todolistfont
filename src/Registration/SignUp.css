@@ -1,0 +1,13 @@
+.sign-form {
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 200px;
+  max-width: 500px;
+  text-align: center; }
+  .sign-form #ttle {
+    text-decoration: wavy;
+    margin-bottom: 2%;
+    font-style: italic;
+    font-size: 25px; }

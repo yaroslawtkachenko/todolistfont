@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './EditForm.css';
-import List from "../Lists/List/List";
-import {createList} from "../actions/listActions";
 
 class EditForm extends Component {
     constructor(props) {
