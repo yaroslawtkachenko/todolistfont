@@ -19,7 +19,7 @@
     color: white;
     width: 25%;
     height: 100%; }
-    .tasks-new-task .tasks-create button {
+    .tasks-new-task .tasks-create .add-task-btn {
       font-family: Ubuntu;
       height: 100%;
       width: 100%;
@@ -28,7 +28,7 @@
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
       white-space: normal; }
-      .tasks-new-task .tasks-create button:hover {
+      .tasks-new-task .tasks-create .add-task-btn:hover {
         border-color: mediumseagreen;
         background: mediumseagreen;
         box-shadow: 0px 0px 2px; }

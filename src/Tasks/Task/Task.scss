@@ -40,9 +40,38 @@
   .task-tools {
     margin: 8px;
     opacity: 0;
+    align-self: center;
+    display: flex;
     &:hover {
       cursor:pointer;
       zoom: normal;
+    }
+    .task-up-down-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 2px;
+      .up-btn {
+        position: absolute;
+      }
+      .down-btn {
+        margin-top: 8px;
+      }
+    }
+    .task-ed-del-btn {
+      margin-left: 2px;
+      align-self: center;
+      display: flex;
+      .edit-btn {
+
+        border-left: solid 1px grey;
+        padding-left: 2px;
+      }
+      .del-btn {
+        border-left: solid 1px grey;
+        padding-left: 2px;
+        margin: 0 5px;
+      }
     }
   }
 }

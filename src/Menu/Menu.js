@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import './Menu.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faSignInAlt} from '@fortawesome/fontawesome-free-solid';
+import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid';
 
-const url = 'https://api-ornull-list.herokuapp.com/sign_in';
+//const url = 'https://api-ornull-list.herokuapp.com/sign_in';
 
 class Menu extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleClick = () => {
         this.props.signOut();
@@ -26,9 +23,9 @@ class Menu extends Component {
                         {/*<strong onClick={this.handleClick}>Sign In</strong>*/}
                     {/*</a>*/}
                     <FontAwesomeIcon icon={faSignOutAlt} size = '1x'/>
-                    <a href="#">
-                        <strong onClick={this.handleClick}>Sign Out</strong>
-                    </a>
+                    <span className='menu-sing-out' onClick={this.handleClick}>
+                        <strong >Sign Out</strong>
+                    </span>
                 </div>
             </div>
         );

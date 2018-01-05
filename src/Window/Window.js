@@ -4,9 +4,6 @@ import Lists from "../Lists/Lists";
 import Menu from "../Menu/Menu";
 
 class Window extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

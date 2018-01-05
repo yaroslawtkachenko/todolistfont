@@ -4,9 +4,6 @@ import Modal from 'react-modal';
 import EditListContent from "./EditListContent";
 
 class EditList extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -3,6 +3,8 @@ import {getCookie, remCookie, setAuthCookies} from "../../actions/Token";
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+export const VALIDATE_TOKEN_FAILURE = 'VALIDATE_TOKEN_FAILURE';
 
 // const url = 'http://localhost:3000/';
 const url = 'https://api-ornull-list.herokuapp.com/';
@@ -32,7 +34,12 @@ export function validateToken() {
                         dispatch(signInSuccess());
                         return Promise.resolve(response.data);
                     }
-                })
+                }).catch((error) => {
+                    dispatch(validateTokenFailure());
+                    return Promise.reject(error);
+                });
+        }else {
+            dispatch(validateTokenFailure());
         }
     }
 }
@@ -52,6 +59,9 @@ export function signUp (email,password, confPasswordSU) {
                     dispatch(signUpSuccess());
                     return Promise.resolve(response.data);
                 }
+            }).catch((error) => {
+                dispatch(signUpFailure());
+                return Promise.reject(error);
             });
     }
 }
@@ -100,5 +110,17 @@ function signUpSuccess () {
 function signOutSuccess () {
     return {
         type: SIGN_OUT_SUCCESS
+    }
+}
+
+function signUpFailure() {
+    return {
+        type: SIGN_UP_FAILURE
+    }
+}
+
+function validateTokenFailure() {
+    return {
+        type: VALIDATE_TOKEN_FAILURE
     }
 }

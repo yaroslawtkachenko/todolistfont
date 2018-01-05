@@ -9,22 +9,23 @@ import { SIGN_OUT_SUCCESS } from "../actions/userActions";
 export default function taskReducer(state = [], action) {
     switch(action.type) {
         case CREATE_TASK_SUCCESS:
-            return [...state,action.payload];
+            return [...state, action.payload];
         case GET_TASKS_SUCCESS:
-            return [...state,...action.payload];
+            return [...state, ...action.payload];
         case UPDATE_TASK_SUCCESS:
             return state.map(task => task.id === action.payload.id ? action.payload : task);
         case DELETE_TASK_SUCCESS:
             return state.filter(task => task.id !== action.payload.id);
         case UP_TASK_SUCCESS:
         case DOWN_TASK_SUCCESS:
-            return replaceTasks(state,action.payload,action.listId);
+            return replaceTasks(state, action.payload, action.listId);
         case CHANGE_TASK_STATUS_SUCCESS:
             return state.map(task => task.id === action.payload.id ? action.payload : task);
         case SIGN_OUT_SUCCESS:
             return [];
+        default:
+            return state;
     }
-    return state;
 }
 
 function replaceTasks(state,payload,listId) {

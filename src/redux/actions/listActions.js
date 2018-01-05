@@ -1,4 +1,3 @@
-import React, { Component} from 'react';
 import axios from 'axios'
 import {getCookie, setAuthCookies} from "../../actions/Token";
 export const CREATE_LIST_SUCCESS = 'CREATE_LIST_SUCCESS';

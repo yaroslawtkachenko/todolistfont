@@ -4,9 +4,6 @@ import Modal from 'react-modal';
 import EditTaskContent from "./EditTaskContent";
 
 class EditTask extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

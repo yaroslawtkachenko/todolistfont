@@ -20,9 +20,6 @@ const propTypes = {
 };
 
 class Tasks extends Component{
-    constructor(props){
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getTasks(this.props.listId)
@@ -46,7 +43,10 @@ class Tasks extends Component{
                         <input id='namefield' type = 'name' placeholder='Start typing here to create a task...' ref='taskName'/>
                     </div>
                     <div className='tasks-create'>
-                        <button onClick={this.taskCreateClick} >Add Tasks</button>
+                        <button className='add-task-btn'
+                            onClick={this.taskCreateClick} >
+                            Add Tasks
+                        </button>
                     </div>
                 </div>
                 <div className='tasks-task'>

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class EditListContent extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleUpdateList = () => {
         this.props.updateList(this.props.listId,this.refs.newName.value );
@@ -12,9 +9,13 @@ class EditListContent extends Component {
     render() {
         return (
             <div className='modal-content'>
-                <input type='name' placeholder='Edit list name...' ref='newName'/>
-                <button onClick={this.handleUpdateList} >Submite</button>
-                <button onClick={this.props.onRequestClose} >Close</button>
+                <div className='modal-name'>
+                    <input type='name' placeholder='Edit list name...' autoFocus={true} ref='newName'/>
+                </div>
+                <div className='modal-button'>
+                    <button onClick={this.handleUpdateList} >Submite</button>
+                    <button onClick={this.props.onRequestClose} >Close</button>
+                </div>
             </div>
         );
     }

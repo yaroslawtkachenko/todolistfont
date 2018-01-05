@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Window from "../Window/Window";
 import './App.scss'
-import { Route, withRouter,Switch } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import SignIn from "../Registration/SignIn";
 import SignUp from "../Registration/SignUp";
 import PropTypes from 'prop-types';
@@ -14,9 +14,6 @@ const propTypes = {
 };
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
 
     componentWillMount () {
         this.props.validateToken();

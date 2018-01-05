@@ -13,6 +13,7 @@ export default function listReducer(state = [], action) {
             return state.filter(list => list.id !== action.payload.id);
         case SIGN_OUT_SUCCESS:
             return [];
+        default:
+            return state;
     }
-    return state;
 }

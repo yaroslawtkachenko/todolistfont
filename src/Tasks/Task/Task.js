@@ -61,10 +61,14 @@ class Task extends Component{
                         <span>{this.props.task.content}</span>
                     </div>}
                 <div className='task-tools'>
-                    <FontAwesomeIcon onClick={this.handleTaskUp} icon={faCaretUp} size = '1x'/> |
-                    <FontAwesomeIcon onClick={this.handleTaskDown} icon={faCaretDown} size = '1x'/> |
-                    <FontAwesomeIcon onClick={this.handleEditClick} icon={faPencilAlt} size = '1x'/> |
-                    <FontAwesomeIcon onClick={this.handleDelClick} icon={faTrash} size = '1x'/>
+                    <div className='task-up-down-btn'>
+                        <FontAwesomeIcon className='up-btn' onClick={this.handleTaskUp} icon={faCaretUp} size = '1x'/>
+                        <FontAwesomeIcon className='down-btn' onClick={this.handleTaskDown} icon={faCaretDown} size = '1x'/>
+                    </div>
+                    <div className='task-ed-del-btn'>
+                        <FontAwesomeIcon className='edit-btn' onClick={this.handleEditClick} icon={faPencilAlt} size = '1x'/>
+                        <FontAwesomeIcon className='del-btn' onClick={this.handleDelClick} icon={faTrash} size = '1x'/>
+                    </div>
                 </div>
             </div>
             {this.state.isShowingModal &&
@@ -77,6 +81,7 @@ class Task extends Component{
         </div>
         );
     }
+
 }
 
 Task.propTypes = propTypes;

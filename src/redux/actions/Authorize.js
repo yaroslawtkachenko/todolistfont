@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import {signOut} from "./userActions";
 
 class Authorize extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const { component: Component, isSignedIn,pending,...rest } = this.props;

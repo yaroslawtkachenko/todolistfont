@@ -12,9 +12,6 @@ const propTypes = {
 };
 
 class SignUp extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleClick = () => {
         let email = this.refs.emailSU.value;

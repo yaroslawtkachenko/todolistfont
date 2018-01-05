@@ -11,10 +11,6 @@ const propTypes = {
 };
 
 class SignIn extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     handleClick = () => {
         let email = this.refs.emailSI.value;
         let password = this.refs.passwordSI.value;

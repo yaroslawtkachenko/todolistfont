@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './EditForm.css';
 
 class EditForm extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleClick = () => {
         this.props.addList(this.refs.inputListName.value);
